@@ -1,0 +1,87 @@
+.red {
+    color: #ff0000;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+.green {
+    color: #00ff00;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+.blue {
+    color: #00ffff;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.globe {
+    position: absolute;
+    cursor: pointer;
+}
+.globe-green {
+    background: url(../images/globe-green.png);
+    background-size: cover;
+    left: 5%;
+}
+.globe-green:hover {
+    background: url(../images/globe-green.gif);
+    background-size: cover;
+}
+.globe-blue {
+    background: url(../images/globe-blue.png);
+    background-size: cover;
+    right: 5%;
+}
+.globe-blue:hover {
+    background: url(../images/globe-blue.gif);
+    background-size: cover;
+}
+.globe-red {
+    background: url(../images/globe-red.png);
+    background-size: cover;
+}
+.globe-red:hover {
+    background: url(../images/globe-red.gif);
+    background-size: cover;
+}
+
+.exoplanet {
+    position: relative;
+}
+.exoplanet-top-left {
+    top: -15%;
+    left: -40%;
+}
+.exoplanet-top-right {
+    top: -15%;
+    right: -40%;
+}
+.exoplanet-name {
+    bottom: -105%;
+}
+.exoplanet-right {
+    right: -125%;
+    top: 25%;
+}
+.exoplanet-bottom-left {
+    bottom: -95%;
+    left: -40%;
+}
+.exoplanet-bottom-right {
+    bottom: -88%;
+    right: -40%;
+}
+
+#help {
+    margin-top: -25%;
+    margin-left: 150%;
+}
+
+.help-icon {
+    width: 40%;
+}
+
+.modal-content {
+    background: black;
+    color: white;
+}
