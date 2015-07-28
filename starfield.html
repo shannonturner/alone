@@ -1,0 +1,84 @@
+<html>
+<head>
+
+    <title>alone (we embark)</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="there is some corner of another world that is forever">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Alone (We Embark)">
+    <meta property="og:site_name" content="http://shannonvturner.com/alone">
+    <meta property="og:url" content="http://shannonvturner.com/alone/starfield.html">
+    <meta property="og:description" content="there is some corner of another world that is forever">
+    <meta property="og:image" content="http://shannonvturner.com/alone/images/alone-starfield.png">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://shannonvturner.com/alone">
+    <meta name="twitter:creator" content="@svt827">
+    <meta name="twitter:title" content="Alone (We Embark)">
+    <meta name="twitter:description" content="there is some corner of another world that is forever">
+    <meta name="twitter:image:src" content="http://shannonvturner.com/alone/images/alone-starfield.png">
+    <meta name="twitter:url" content="http://shannonvturner.com/alone/starfield.html">
+
+    <link rel="icon" href="http://shannonvturner.com/favicon.ico">
+
+    <style>
+
+        html, body {
+            height: 100%;
+            background-color: black;
+        }
+
+        #starfield {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+        }
+
+        #stargaze {
+            width: 100%;
+            height: 100%;
+        }
+
+        #help {
+            display: none;
+        }
+
+    </style>
+
+    <link href="css/alone.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div class="starfield" id="starfield">
+        <canvas id="canvas2d"></canvas>
+      <div></div>
+    </div>
+
+    <div class="globe globe-red">
+        <div class="exoplanet exoplanet-right red">
+            <div id="stardeck">Back to Star Deck</div>
+            <div id="help">Help</div>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/starfield.js"></script>
+    <script src="js/alone.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#starfield").css({'height': $(window).height()});
+            $("#stargaze").css({'height': $(window).height(), 'width': $(window).width()});
+            $("#stargaze").toggle();
+        });
+    </script>
+
+</body>
+</html>
