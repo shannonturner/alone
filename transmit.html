@@ -1,0 +1,263 @@
+<html>
+<head>
+
+    <title>alone (transmit)</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Call out into the void">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Alone">
+    <meta property="og:site_name" content="http://shannonvturner.com/alone">
+    <meta property="og:url" content="http://shannonvturner.com/alone/transmit.html">
+    <meta property="og:description" content="Call out into the void">
+    <meta property="og:image" content="http://shannonvturner.com/alone/images/alone-transmit.png">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://shannonvturner.com/alone">
+    <meta name="twitter:creator" content="@svt827">
+    <meta name="twitter:title" content="Alone">
+    <meta name="twitter:description" content="Call out into the void">
+    <meta name="twitter:image:src" content="http://shannonvturner.com/alone/images/alone-transmit.png">
+    <meta name="twitter:url" content="http://shannonvturner.com/alone/transmit.html">
+
+    <link rel="icon" href="http://shannonvturner.com/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="css/alone.css" rel="stylesheet" type="text/css">
+
+<style>
+
+body {
+    background: black;
+    overflow: hidden;
+}
+
+.signal-baseline {
+    width: 100%;
+    height: 6px;
+    background-color: #f00;
+    position: relative;
+    top: 50%;
+}
+
+.prime-signal {
+    position: relative;
+    top: 45%;
+    width: 100%;
+}
+
+.signal-peak {
+    width: 1%;
+    height: 14%;
+    background-color: #f00;
+    position: fixed;
+    top: 45%;
+    left: 105%; /* Adjust left value as the signal "progresses" from right to left */
+}
+
+.signal-green {
+    background-color: #0f0 !important;
+}
+
+.signal-progress-green {
+    color: #0f0 !important;
+}
+
+.signal-peak-left {
+    left: -5%;
+    transition: 1.5s;
+}
+
+.signal-peak-right {
+    left: 105%;
+}
+
+#prime-progress {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: -40%;
+    transform: rotate(-90deg);
+}
+
+.signal-progress {
+    margin: 1%;
+    color: #f00;
+}
+
+</style>
+
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49936574-1', 'shannonvturner.com');
+      ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+
+<div class="signal-baseline"> </div>
+
+<div class="prime-signal"> </div>
+
+<div id="prime-progress"> </div>
+
+<div class="globe globe-red">
+    <div class="exoplanet exoplanet-right red">
+        <div id="stardeck">Back to Star Deck</div>
+        <div id="help">Help</div>
+    </div>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="helpModalLabel">Transmit</h3>
+      </div>
+      <div class="modal-body">
+        <h4>During each signal pulse, press the corresponding number keys in order to boost the signal's transmitting power.</h4>
+      </div>
+      <div class="modal-footer"> </div>
+    </div>
+  </div>
+</div> <!-- #helpModal -->
+
+<script src="js/tones.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="js/alone.js"></script>
+<script>
+
+var primes = [1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+var correctKeySequences = [];
+
+function sendSignal() {
+    // Sends one signal across the screen
+    $(".prime-signal").append('<div class="signal-peak"> </div>');
+    setTimeout(function() {
+        $(".signal-peak").addClass("signal-peak-left");
+    }, 25); // Without this setTimeout, you can't see the signal moving across the screen.
+}
+
+function sendSignals(n) {
+    // Sends n signals across the screen
+    console.log("Sending " + n);
+    for (var x=0; x<n; x++) {
+        setTimeout(sendSignal, x*50); // Without this setTimeout, all signals in a set clump together
+    }
+}
+
+function signalProgress(n) {
+    // Display the signal progress across the bottom of the screen.
+    $("#prime-progress").append('<div id="signal-progress-' + (n - 1) + '" class="signal-progress">' + Array(n).join(".") + '</div>');    
+}
+
+function primeSignal() {
+    // Iterates through the prime numbers, sending signals across the screen at a delay.
+    for (var x=0; x<primes.length; x++) {
+        setTimeout(sendSignals, primes[x] * 1300, primes[x]);
+        setTimeout(signalProgress, primes[x] * 1300, primes[x] + 1);
+        setTimeout(listenFor, primes[x] * 1300, primes[x].toString());
+        setTimeout(playNotes, primes[x] * 1300, primes[x]);
+    }
+}
+
+function clearSignal() {
+    // Clears all signals from .prime-signal
+    $(".prime-signal").empty();
+}
+
+function greenSignal(keyCombo) {
+    // This gets called when the correct key sequence is pressed.
+    // Right now it just turns the signal and its progress dots green
+    // TODO: What should you do for getting 100% completion? Anything for partial completion?
+    console.log("pressed " + keyCombo + " at the right time");
+    $("#signal-progress-" + keyCombo).addClass("signal-progress-green");
+    $(".signal-baseline").addClass("signal-green");
+    $(".signal-peak").addClass("signal-green");
+    correctKeySequences.append(keyCombo);
+    if (correctKeySequences == primes) {
+        // 100% completion, 26 primes
+    } else {
+        // Not yet completed
+    }
+}
+
+function listenFor(keyCombo) {
+    // Listens for keypresses in a specific order
+
+    document.onkeydown = null; // Clear the previous value;
+    var pressedFirstChar = false;
+    $(".signal-baseline").removeClass("signal-green");
+    $(".signal-peak").removeClass("signal-green");
+    document.onkeydown = function(event) {
+        if (keyCombo.toString().length == 1 && keyCombo.toString().toUpperCase().charCodeAt() == event.keyCode) {
+            greenSignal(keyCombo);   
+        }
+        else if (keyCombo.toString().length == 2) {
+            // Numbers like 11 don't work now
+            if (keyCombo.toString().toUpperCase().slice(1, 2).charCodeAt() == event.keyCode && pressedFirstChar) {
+                greenSignal(keyCombo);
+            }
+            else if (keyCombo.toString().toUpperCase().slice(0, 1).charCodeAt() == event.keyCode) {
+                pressedFirstChar = true;
+            }
+            else {
+                pressedFirstChar = false;
+            }
+        }
+    };
+}
+
+function playNotes(n) {
+    // Modified from http://audiolyzr.pythonanywhere.com/test
+
+    var signalTone = String(n + " ") .repeat(n).trim().split(" ");
+    console.log("signaltone is " + signalTone);
+
+    tones.type = "sine";
+    tones.attack = 50;
+    tones.release = 50;
+    var timing = 125;
+    var srange = 3951.1 - 16.352; // Limits to peak octave of 8
+    var midc = 261.63;  // Frequency of middle C
+    var max = Math.max.apply(Math, signalTone);
+    var min = Math.min.apply(Math, signalTone);
+    var index = 0
+    for (var i=0; i<signalTone.length; i++) {
+        signalTone[i] = ((signalTone[i] - min) / max) * srange + midc;
+    }
+    var prevTime = tones.getTimeMS();
+    var elapsed = 0;
+    play();
+    function play() {
+        var now = tones.getTimeMS();
+        elapsed += now - prevTime;
+        if(elapsed > timing) {
+            elapsed -= timing;
+            var note = signalTone[index];
+            if(note !== 0) {
+                tones.play(note);
+            }
+            index++;
+        }
+        prevTime = now;
+        requestAnimationFrame(play);
+    }
+}
+
+primeSignal();
+
+</script>
+
+</body>
+</html>
