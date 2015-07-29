@@ -1,0 +1,401 @@
+<html>
+<head>
+
+    <title>alone (deep field)</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore the cosmos as seen by the Hubble Space Telescope">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Deep Field">
+    <meta property="og:site_name" content="http://shannonvturner.com">
+    <meta property="og:url" content="http://shannonvturner.com/alone/deepfield.html">
+    <meta property="og:description" content="Explore the cosmos as seen by the Hubble Space Telescope">
+    <meta property="og:image" content="http://shannonvturner.com/alone/images/deepfieldxl.jpg">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://shannonvturner.com/alone">
+    <meta name="twitter:creator" content="@svt827">
+    <meta name="twitter:title" content="Deep Field">
+    <meta name="twitter:description" content="Explore the cosmos as seen by the Hubble Space Telescope">
+    <meta name="twitter:image:src" content="http://shannonvturner.com/alone/images/deepfieldxl.jpg">
+    <meta name="twitter:url" content="http://shannonvturner.com/alone/deepfield.html">
+
+    <link rel="icon" href="http://shannonvturner.com/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="css/alone.css" rel="stylesheet" type="text/css">
+
+<style>
+
+body {
+    background: black;
+    overflow: hidden;
+    line-height: 1;
+}
+
+.container-fluid {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#porthole {
+    width: auto;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin: auto;
+    background: url(images/deepfield.jpg) 50% 50%;
+    /* background-repeat means that I don't need to bound values to 0-100 and the image will wrap around seamlessly, infinitely */
+    background-repeat: repeat;
+}
+
+#image-credit {
+    position: absolute;
+    top: 95%;
+    right: 0%;
+}
+
+</style>
+
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49936574-1', 'shannonvturner.com');
+      ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="globe globe-green">
+        <div class="exoplanet exoplanet-name green">Kepler-438b</div>
+        <div class="exoplanet exoplanet-top-left green">ESI: 0.88<br>SPH: 0.88</div>
+        <div class="exoplanet exoplanet-top-right green">470 LY</div>
+        <div class="exoplanet exoplanet-bottom-left green">HZD: -0.93<br>HZC: -0.14</div>
+        <div class="exoplanet exoplanet-bottom-right green">HZA: -0.73</div>
+    </div>
+    <div class="globe globe-blue">
+        <div class="exoplanet exoplanet-name blue">Kepler-438b</div>
+        <div class="exoplanet exoplanet-top-left blue">ESI: 0.88<br>SPH: 0.88</div>
+        <div class="exoplanet exoplanet-top-right blue">470 LY</div>
+        <div class="exoplanet exoplanet-bottom-left blue">HZD: -0.93<br>HZC: -0.14</div>
+        <div class="exoplanet exoplanet-bottom-right blue">HZA: -0.73</div>
+    </div>
+
+    <div class="globe globe-red">
+        <div class="exoplanet exoplanet-right red">
+            <div id="stardeck">Back to Star Deck</div>
+            <div id="help">Help</div>
+        </div>
+    </div>
+
+    <div id="porthole"> </div>
+
+    <div id="image-credit" class="red"> </div>
+
+</div> <!-- .container-fluid -->
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="helpModalLabel">Deep Field</h3>
+      </div>
+      <div class="modal-body">
+        <h4>Look around the cosmos using the arrow keys.</h4>
+        <br> <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <h4>Press to view a different galaxy.</h4>
+            </div>
+            <div class="col-sm-4">
+                <img src="images/globe-green.png" class="img-responsive help-icon">
+            </div>
+            <div class="col-sm-4">
+                <img src="images/globe-blue.png" class="img-responsive help-icon">
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer"> </div>
+    </div>
+  </div>
+</div> <!-- #helpModal -->
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="js/alone.js"></script>
+<script>
+
+// Arrow Keys for Desktop
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 37) { // Left Arrow
+        portholeViewX -= 1;
+    } else if (event.keyCode == 38) { // Up Arrow
+        portholeViewY -= 1;
+    } else if (event.keyCode == 39) { // Right Arrow
+        portholeViewX += 1;
+    } else if (event.keyCode == 40) { // Down Arrow
+        portholeViewY += 1;
+    }
+
+    $("#porthole").css({
+        "background": "url(images/" + galaxies[currentView] + ") " + portholeViewX + "% " + portholeViewY + "%"
+    });
+});
+
+// Exoplanet facts start out hidden
+$(".exoplanet.green").hide();
+$(".exoplanet.blue").hide();
+
+// Exoplanet facts show on globe hover
+$(".globe-green").hover(function() {
+    $(".exoplanet.green").show();
+}, function() {
+    $(".exoplanet.green").hide();
+});
+
+$(".globe-blue").hover(function() {
+    $(".exoplanet.blue").show();
+}, function() {
+    $(".exoplanet.blue").hide();
+});
+
+// Which Galaxy gets shown
+currentView = 0;
+
+galaxies = [
+    'deepfield.jpg',
+    'mysticmountain.jpg',
+    'carinanebula.jpg',
+    'quintuplet.jpg',
+    'sagdwarf.jpeg',
+    'palomar12.jpg',
+    'swarm-stars.jpg',
+    'orion-nebula.jpg',
+    'cygnus-loop-uv.jpg',
+    'fireworks-hubble25.jpg',
+    'monkeyhead.jpg',
+    'small-magellanic.jpg',
+    'merging-galaxies.jpg',
+    'deepfieldxl.jpg',
+];
+
+imageCredit = [
+    'NASA (Hubble Space Telescope)', // Hubble Deep Field
+    'NASA / ESA', // Mystic Mountain
+    'Fedaro (Fernando da Rosa) y Santiago Roland', // Carina Nebula
+    'NASA / ESA', // Quintuplet Cluster
+    'NASA / ESA', // Sagittarius Dwarf Irregular Galaxy
+    'NASA / ESA', // Palomar 12 Globular Cluster
+    'NASA / ESA', // A Swarm of Ancient Stars
+    'NASA / ESA', // Orion Nebula
+    'NASA', // Cygnus Loop Supernova in Ultraviolet
+    'NASA / ESA', // Fireworks for Hubble's 25th
+    'NASA / ESA', // Monkey's Head Nebula
+    'NASA / ESA', // Small Magellanic Cloud
+    'NASA / ESA', // Merging Galaxies / Cosmic Collisions
+    'NASA / ESA', // Deepfield XDF
+]
+
+// Preload images
+preloadedImages = "a".repeat(galaxies.length).split("a");
+for (var x=0; x<galaxies.length; x++) {
+    preloadedImages[x] = new Image();
+    preloadedImages[x].src = 'images/' + galaxies[x];
+}
+preloadedImages[galaxies.length] = new Image();
+preloadedImages[galaxies.length].src = 'images/static.gif';
+
+// Add more from 
+// https://en.wikipedia.org/wiki/List_of_potentially_habitable_exoplanets
+exoplanets = [
+    {
+        'exoplanet-name': 'Kepler-438b',
+        'exoplanet-top-left': 'ESI: 0.88<br>SPH: 0.88',
+        'exoplanet-top-right': '470 LY',
+        'exoplanet-bottom-left': 'HZD: -0.93<br>HZC: -0.14',
+        'exoplanet-bottom-right': 'HZA: -0.73',
+    },
+    {
+        'exoplanet-name': 'Gliese 667 Cc',
+        'exoplanet-top-left': 'ESI: 0.84<br>SPH: 0.64',
+        'exoplanet-top-right': '23.6 LY',
+        'exoplanet-bottom-left': 'HZD: -0.62<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.21',
+    },
+    {
+        'exoplanet-name': 'KOI-3010.01',
+        'exoplanet-top-left': 'ESI: 0.84<br>SPH: 0.63',
+        'exoplanet-top-right': '1213.4 LY',
+        'exoplanet-bottom-left': 'HZD: -0.88<br>HZC: -0.16',
+        'exoplanet-bottom-right': 'HZA: -0.06',
+    },
+    {
+        'exoplanet-name': 'Kepler-442b',
+        'exoplanet-top-left': 'ESI: 0.83<br>SPH: 0.98',
+        'exoplanet-top-right': '1291.6 LY',
+        'exoplanet-bottom-left': 'HZD: -0.72<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.28',
+    },
+    {
+        'exoplanet-name': 'HD 40307 g',
+        'exoplanet-top-left': 'ESI: 0.74<br>SPH: <b class="red">0.04</b>',
+        'exoplanet-top-right': '41.7 LY',
+        'exoplanet-bottom-left': 'HZD: -0.23<br>HZC: -0.14',
+        'exoplanet-bottom-right': 'HZA: +0.77',
+    },
+    {
+        'exoplanet-name': 'Kepler-62e',
+        'exoplanet-top-left': 'ESI: 0.83<br>SPH: 0.96',
+        'exoplanet-top-right': '1199.7 LY',
+        'exoplanet-bottom-left': 'HZD: -0.70<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.28',
+    },
+    {
+        'exoplanet-name': 'Tau Ceti e',
+        'exoplanet-top-left': 'ESI: 0.78<br>SPH: <b class="red">0.00</b>',
+        'exoplanet-top-right': '11.9 LY',
+        'exoplanet-bottom-left': 'HZD: -0.92<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.16',
+    },
+    {
+        'exoplanet-name': 'Kepler-298d',
+        'exoplanet-top-left': 'ESI: 0.68<br>SPH: <b class="red">0.00</b>',
+        'exoplanet-top-right': '1545 LY',
+        'exoplanet-bottom-left': 'HZD: -0.86<br>HZC: -0.11',
+        'exoplanet-bottom-right': 'HZA: <b class="red">+2.11</b>',
+    },
+    {
+        'exoplanet-name': 'Kapteyn b',
+        'exoplanet-top-left': 'ESI: 0.67<br>SPH: <b class="red">0.00</b>',
+        'exoplanet-top-right': '12.7 LY',
+        'exoplanet-bottom-left': 'HZD: +0.08<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.57',
+    },
+    {
+        'exoplanet-name': 'Gliese 422 b',
+        'exoplanet-top-left': 'ESI: 0.71<br>SPH: 0.17',
+        'exoplanet-top-right': '41.3 LY',
+        'exoplanet-bottom-left': 'HZD: -0.41<br>HZC: -0.13',
+        'exoplanet-bottom-right': 'HZA: <b class="red">+1.11</b>',
+    },
+    {
+        'exoplanet-name': 'Kepler-61b',
+        'exoplanet-top-left': 'ESI: 0.73<br>SPH: 0.27',
+        'exoplanet-top-right': '1062.8 LY',
+        'exoplanet-bottom-left': 'HZD: -0.88<br>HZC: -0.13',
+        'exoplanet-bottom-right': 'HZA: <b class="red">+1.24</b>',
+    },
+    {
+        'exoplanet-name': 'KOI-2770.01',
+        'exoplanet-top-left': 'ESI: 0.60<br>SPH: <b class="red">0.00</b>',
+        'exoplanet-top-right': '1470.4 LY',
+        'exoplanet-bottom-left': 'HZD: +0.33<br>HZC: -0.13',
+        'exoplanet-bottom-right': 'HZA: <b class="red">+1.77</b>',
+    },
+    {
+        'exoplanet-name': 'Gliese 581 g',
+        'exoplanet-top-left': 'ESI: 0.76<br>SPH: 1.00',
+        'exoplanet-top-right': '20.2 LY',
+        'exoplanet-bottom-left': 'HZD: -0.70<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.28',
+    }, 
+    {
+        'exoplanet-name': 'KOI-4333.01',
+        'exoplanet-top-left': 'ESI: 0.75<br>SPH: <b class="red">0.00</b>',
+        'exoplanet-top-right': '2504.7 LY',
+        'exoplanet-bottom-left': 'HZD: -0.90<br>HZC: -0.15',
+        'exoplanet-bottom-right': 'HZA: +0.32',
+    }, 
+];
+
+function setExoplanetFacts(color, facts) {
+    $("." + color + ".exoplanet-top-left").html(facts['exoplanet-top-left']);
+    $("." + color + ".exoplanet-top-right").html(facts['exoplanet-top-right']);
+    $("." + color + ".exoplanet-bottom-left").html(facts['exoplanet-bottom-left']);
+    $("." + color + ".exoplanet-bottom-right").html(facts['exoplanet-bottom-right']);
+    $("." + color + ".exoplanet-name").html(facts['exoplanet-name']);
+}
+
+function changeFrequency() {
+
+    previousView = currentView - 1;
+    nextView = currentView + 1;
+    if (currentView == 0) {
+        previousView = galaxies.length - 1;
+    } else if (currentView == galaxies.length - 1) {
+        nextView = 0;
+    }
+
+    // When changing frequency, show static/snow gif first, then ...
+    $("#porthole").css({
+        "background": "url(images/static.gif)"
+    });
+
+    // When changing frequency, show next galaxy
+    setTimeout(function() {
+        $("#porthole").css({
+            "background": "url(images/" + galaxies[currentView] + ") " + portholeViewX + "% " + portholeViewY + "%"
+        });
+    }, 1250);
+
+    // Clicking on an exoplanet changes the exoplanet facts
+    setExoplanetFacts('green', exoplanets[previousView]);
+    setExoplanetFacts('blue', exoplanets[nextView]);
+
+    $("#image-credit").text('Image Credit: ' + imageCredit[currentView]);
+}
+
+$(".globe-green").click(function() {
+    // Previous
+    if (currentView == 0) {
+        currentView = galaxies.length - 1;
+    } else {
+        currentView -= 1;
+    }
+    changeFrequency();
+
+    // Hide Old Exoplanet Facts / Reveal New
+    $(".exoplanet.green").hide();
+    setTimeout(function() {
+        $(".exoplanet.green").show();
+    }, 500);
+});
+
+$(".globe-blue").click(function() {
+    // Next
+    if (currentView == galaxies.length - 1) {
+        currentView = 0;
+    } else {
+        currentView += 1;
+    }
+    changeFrequency();
+
+    // Hide Old Exoplanet Facts / Reveal New
+    $(".exoplanet.blue").hide();
+    setTimeout(function() {
+        $(".exoplanet.blue").show();
+    }, 500);
+});
+
+// On page load
+changeFrequency();
+
+// (DEBUG) Make sure galaxies and exoplanets is the same length; important when adding new ones
+if (galaxies.length != exoplanets.length) { console.log("WARNING: galaxies[] and exoplanets{} are not the same size."); }
+// (DEBUG) Make sure galaxies and imageCredit is the same length; important when adding new ones
+if (galaxies.length != imageCredit.length) { console.log("WARNING: galaxies[] and imageCredit[] are not the same size."); }
+
+</script>
+
+</body>
+</html>
