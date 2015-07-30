@@ -1,0 +1,100 @@
+<html>
+<head>
+
+    <title>alone (no hope)</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="They will be mourned they will be mourned they will be mourned they will be mourned">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Alone (No Hope)">
+    <meta property="og:site_name" content="http://shannonvturner.com/alone">
+    <meta property="og:url" content="http://shannonvturner.com/alone/nohope.html">
+    <meta property="og:description" content="They will be mourned they will be mourned they will be mourned they will be mourned">
+    <meta property="og:image" content="http://shannonvturner.com/alone/images/nixon-letter-redacted2.jpg">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://shannonvturner.com/alone">
+    <meta name="twitter:creator" content="@svt827">
+    <meta name="twitter:title" content="Alone (No Hope)">
+    <meta name="twitter:description" content="They will be mourned they will be mourned they will be mourned they will be mourned">
+    <meta name="twitter:image:src" content="http://shannonvturner.com/alone/images/nixon-letter-redacted2.jpg">
+    <meta name="twitter:url" content="http://shannonvturner.com/alone/nohope.html">
+
+    <link rel="icon" href="http://shannonvturner.com/favicon.ico">
+    <link href="css/alone.css" rel="stylesheet" type="text/css">
+
+    <style>
+
+        html, body {
+            height: 100%;
+            background-color: black;
+        }
+
+        #moonwalk-iframe {
+            width: 60%;
+            height: 95%;
+            margin-left: 35%;
+            border: 0;
+        }
+
+        #letter-container {
+            left: 5%;
+            top: 10%;
+            width: 30%;
+            height: 90%;
+            position: absolute;
+        }
+
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
+
+    <link href="css/alone.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="letter-container">
+        <img src="images/nixon-letter.jpg" class="img-responsive" id="letter">
+    </div>
+
+    <iframe id="moonwalk-iframe" src="http://shannonvturner.com/glitch/moonwalk"> </iframe>
+
+    <div class="globe globe-red">
+        <div class="exoplanet exoplanet-right red">
+            <div id="stardeck">I've seen enough</div>
+            <div id="help">Help.is.not.coming</div>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/alone.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var letters = [
+                'nixon-letter.jpg',
+                'nixon-letter-redacted1.jpg',
+                'nixon-letter-redacted2.jpg',
+                'nixon-letter-redacted3.jpg',
+                'nixon-letter-redacted4.jpg',
+            ];
+            // Wait 40 seconds before changing the letter, then change it every 20 seconds
+            setTimeout(function() {
+                setInterval(function() {
+                    $("#letter").attr("src", "images/" + letters[Math.floor(Math.random() * letters.length)]);
+                }, 20000);
+            }, 20000);
+        });
+    </script>
+
+</body>
+</html>
