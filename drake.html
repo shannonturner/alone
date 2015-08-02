@@ -1,0 +1,333 @@
+<html>
+<head>
+
+    <title>alone (out there)</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Our best guess at how alone we are">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Alone (out there)">
+    <meta property="og:site_name" content="http://shannonvturner.com/alone">
+    <meta property="og:url" content="http://shannonvturner.com/alone/drake.html">
+    <meta property="og:description" content="Our best guess at how alone we are">
+    <meta property="og:image" content="http://shannonvturner.com/alone/images/milkyway.jpg">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://shannonvturner.com/alone">
+    <meta name="twitter:creator" content="@svt827">
+    <meta name="twitter:title" content="Alone (out there)">
+    <meta name="twitter:description" content="Our best guess at how alone we are">
+    <meta name="twitter:image:src" content="http://shannonvturner.com/alone/images/milkyway.jpg">
+    <meta name="twitter:url" content="http://shannonvturner.com/alone/drake.html">
+
+    <link rel="icon" href="http://shannonvturner.com/favicon.ico">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link href="css/alone.css" rel="stylesheet" type="text/css">
+
+<style>
+
+body {
+    background: black;
+    color: #00ffff;
+}
+
+.row {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.equation-div {
+    margin-bottom: 3.5%;
+}
+
+.equation-input {
+    background: black;
+    color: #00ffff;
+    margin-bottom: 5px;
+    font-weight: bold;
+    border: 0;
+}
+
+.estimates {
+    background: black;
+    color: #00ffff;
+}
+
+label {
+    margin-top: 5%;
+}
+
+#aloneModalDialog {
+    width: 90%;
+    height: auto;
+}
+
+</style>
+
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49936574-1', 'shannonvturner.com');
+      ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+
+<div class="container-fluid text-center">
+
+    <div class="row equation-div">
+        <h2 id="equation">N = <i>R</i><sub>&ast;</sub> &middot; &fnof;<sub>p</sub> &middot; &nscr;<sub><i>e</i></sub> &middot; &fnof;<sub>&ell;</sub> &middot; &fnof;<sub>i</sub> &middot; &fnof;<sub>c</sub> &middot; <i>L</i>
+        </h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="stars-formed">Stars formed each year over average life of the Milky Way galaxy:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="stars-formed" readonly class="equation-input text-center">
+            <div id="stars-formed-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="stars-planets">Percent of those stars with planets:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="stars-planets" readonly class="equation-input text-center">
+            <div id="stars-planets-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="planets-per-star">Planets per star that can support life:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="planets-per-star" readonly class="equation-input text-center">
+            <div id="planets-per-star-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="planets-life">Percent of planets capable of life where life arises:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="planets-life" readonly class="equation-input text-center">
+            <div id="planets-life-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="planets-intelligent-life">Percent of planets with life where intelligent life arises:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="planets-intelligent-life" readonly class="equation-input text-center">
+            <div id="planets-intelligent-life-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="planets-high-tech">Percent of planets with intelligent life that develops high technology:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="planets-high-tech" readonly class="equation-input text-center">
+            <div id="planets-high-tech-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <label for="civilization-life">Length of time these societies survive:</label>
+        </div>
+        <div class="col-md-1"> </div>
+        <div class="col-md-6">
+            <input type="text" id="civilization-life" readonly class="equation-input text-center">
+            <div id="civilization-life-slider" class="equation-slider"></div>
+        </div>
+        <div class="col-md-1"> </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <h3 id="result"> </h3>
+    </div>
+
+</div> <!-- .container-fluid -->
+
+<div class="globe globe-red">
+    <div class="exoplanet exoplanet-right red">
+        <div id="stardeck">Back to Star Deck</div>
+        <div id="help">Help</div>
+    </div>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="helpModalLabel">Drake Equation</h3>
+      </div>
+      <div class="modal-body">
+        <h4>Our best guess at how alone we are in the Milky Way.</h4>
+      </div>
+      <div class="modal-footer"> </div>
+    </div>
+  </div>
+</div> <!-- #helpModal -->
+
+<div class="modal fade" id="aloneModal" tabindex="-1" role="dialog" aria-labelledby="aloneModalLabel">
+  <div id="aloneModalDialog" class="modal-dialog" role="document">
+    <div id="aloneModalContent" class="modal-content text-center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="aloneModalLabel">The Milky Way, our home, is one of 100,000,000 galaxies.</h3>
+      </div>
+      <div class="modal-body">
+        <a href="deepfield.html"><img src="images/milkyway.jpg" class="img-responsive"></a>
+      </div>
+      <div class="modal-footer"> </div>
+    </div>
+  </div>
+</div> <!-- #aloneModal -->
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/alone.js"></script>
+<script>
+
+var equationHeight = Math.floor(viewportHeight / 12);
+
+$(".row").css({
+    "height": equationHeight + "px",
+});
+
+$(function() {
+    // Initalize all sliders
+
+    $( "#stars-formed-slider" ).slider({
+      range: "max",
+      min: 1,
+      max: 20,
+      value: 7,
+      slide: function( event, ui ) {
+        $( "#stars-formed" ).val( ui.value );
+        calculateValue();
+      }
+    });
+    $( "#stars-formed" ).val( $( "#stars-formed-slider" ).slider( "value" ) );
+
+    $( "#stars-planets-slider" ).slider({
+      range: "max",
+      min: 1,
+      max: 100,
+      value: 99,
+      slide: function( event, ui ) {
+        $( "#stars-planets" ).val( ui.value + "%");
+        calculateValue();
+      }
+    });
+    $( "#stars-planets" ).val( $( "#stars-planets-slider" ).slider( "value" ) + "%");
+
+    $( "#planets-per-star-slider" ).slider({
+      range: "max",
+      min: 1,
+      max: 20,
+      value: 2,
+      slide: function( event, ui ) {
+        $( "#planets-per-star" ).val( ui.value );
+        calculateValue();
+      }
+    });
+    $( "#planets-per-star" ).val( $( "#planets-per-star-slider" ).slider( "value" ) );
+
+    $( "#planets-life-slider" ).slider({
+      range: "max",
+      min: 1,
+      max: 100,
+      value: 70,
+      slide: function( event, ui ) {
+        $( "#planets-life" ).val( ui.value + "%");
+        calculateValue();
+      }
+    });
+    $( "#planets-life" ).val( $( "#planets-life-slider" ).slider( "value" ) + "%");
+
+    $( "#planets-intelligent-life-slider" ).slider({
+      range: "max",
+      min: 1,
+      max: 100,
+      value: 55,
+      slide: function( event, ui ) {
+        $( "#planets-intelligent-life" ).val( ui.value + "%");
+        calculateValue();
+      }
+    });
+    $( "#planets-intelligent-life" ).val( $( "#planets-intelligent-life-slider" ).slider( "value" ) + "%");
+
+    $( "#planets-high-tech-slider" ).slider({
+      range: "max",
+      min: 1,
+      max: 100,
+      value: 40,
+      slide: function( event, ui ) {
+        $( "#planets-high-tech" ).val( ui.value + "%");
+        calculateValue();
+      }
+    });
+    $( "#planets-high-tech" ).val( $( "#planets-high-tech-slider" ).slider( "value" ) + "%");
+
+    $( "#civilization-life-slider" ).slider({
+      range: "max",
+      min: 400,
+      max: 300000000,
+      value: 100000,
+      slide: function( event, ui ) {
+        $( "#civilization-life" ).val( ui.value.toLocaleString() + " Earth years");
+        calculateValue();
+      }
+    });
+    $( "#civilization-life" ).val( $( "#civilization-life-slider" ).slider( "value" ).toLocaleString() + " Earth years" );
+
+    function calculateValue() {
+        var result = parseInt($("#stars-formed").val()) * parseInt($("#stars-planets").val()) / 100 * parseInt($("#planets-per-star").val()) * parseInt($("#planets-life").val()) / 100 * parseInt($("#planets-intelligent-life").val()) / 100 * parseInt($("#planets-high-tech").val()) / 100 * parseInt($("#civilization-life").val());
+        $("#result").html('In the Milky Way <a id="aloneModalLink" href="#">alone</a>, there are perhaps ' + Math.floor(result).toLocaleString() + " intelligent civilizations we might communicate with.");
+        $("#aloneModalLabel").text('The Milky Way, our home, with perhaps ' + Math.floor(result).toLocaleString() + ' intelligent civilizations we might communicate with, is just one of 100,000,000 galaxies.');
+    };
+
+    $("#result").click(function() {
+        $("#aloneModal").modal();
+    });
+
+});
+
+</script>
+
+</body>
+</html>
