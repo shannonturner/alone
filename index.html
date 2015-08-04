@@ -1,0 +1,143 @@
+<html>
+<head>
+
+    <title>alone</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="we embark in search of a new home">
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Alone">
+    <meta property="og:site_name" content="http://shannonvturner.com/alone">
+    <meta property="og:url" content="http://shannonvturner.com/alone">
+    <meta property="og:description" content="we embark in search of a new home">
+    <meta property="og:image" content="http://shannonvturner.com/alone/images/control-panel.jpg">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://shannonvturner.com/alone">
+    <meta name="twitter:creator" content="@svt827">
+    <meta name="twitter:title" content="Alone">
+    <meta name="twitter:description" content="we embark in search of a new home">
+    <meta name="twitter:image:src" content="http://shannonvturner.com/alone/images/control-panel.jpg">
+    <meta name="twitter:url" content="http://shannonvturner.com/alone">
+
+    <link rel="icon" href="http://shannonvturner.com/favicon.ico">
+
+<style>
+
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+#controlpanel {
+    width: 100%;
+    height: auto;
+}
+
+.panel-holo {
+    color: #0f0;
+    font-family: monospace;
+    position: absolute;
+    background: black;
+    padding: 2px;
+    text-transform: uppercase;
+}
+
+</style>
+
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-49936574-1', 'shannonvturner.com');
+      ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <img name="controlpanel" src="images/control-panel.jpg" width="2982" height="1940" id="controlpanel" usemap="#m_controlpanel" alt="Control Panel">
+
+    <div id="panel-holo-top" class="panel-holo"> </div>
+    <div id="panel-holo-bottom" class="panel-holo"> </div>
+
+    <map name="m_controlpanel" id="m_controlpanel">
+        <area shape="poly" coords="2550,147,2721,360,2980,334,2982,2,2743,-4" href="javascript:;" alt="" />
+        <area shape="poly" coords="0,336,413,371,593,158,428,0,-4,0" href="javascript:;" alt="" />
+        <area shape="poly" coords="-4,1938,259,1938,551,1543,384,1490,0,1672" href="javascript:;" alt="" />
+        <area shape="poly" coords="2535,1503,2704,1446,2976,1561,2978,1936,2941,1936" href="javascript:;" alt="" />
+        <area shape="poly" coords="2715,1437,2754,1114,2982,1163,2980,1547" href="javascript:;" alt="" />
+        <area shape="poly" coords="0,1223,314,1139,375,1475,2,1649" href="javascript:;" alt="" />
+        <area id="screen-9" class="controlpanel-object" shape="rect" coords="2280,1022,2473,1215" href="transmit.html" alt="Transmit|Message" />
+        <area id="screen-8" class="controlpanel-object" shape="rect" coords="2008,1036,2210,1225" href="starfield.html" alt="Warp|Speed" />
+        <area id="screen-7" class="controlpanel-object" shape="rect" coords="1713,1185,1913,1369" href="nohope.html" alt="No|Hope" />
+        <area id="screen-6" class="controlpanel-object" shape="rect" coords="1713,943,1913,1136" href="#" alt="Access|Restricted" />
+        <area id="screen-5" class="controlpanel-object" shape="rect" coords="1441,1053,1656,1262" href="#" alt="Access|Restricted" />
+        <area id="screen-4" class="controlpanel-object" shape="rect" coords="1182,1185,1380,1383" href="#" alt="Access|Restricted" />
+        <area id="screen-3" class="controlpanel-object" shape="rect" coords="1182,943,1380,1136" href="#" alt="Access|Restricted" />
+        <area id="screen-2" class="controlpanel-object" shape="rect" coords="884,1053,1084,1246" href="deepfield.html" alt="Deep|Field" />
+        <area id="screen-1" class="controlpanel-object" shape="rect" coords="610,1053,814,1246" href="drake.html" alt="Out|There" />
+    </map>
+
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery.rwdImageMaps.min.js"></script>
+<script>
+
+function placePanelHelperTextRect(coords) {
+    $('#panel-holo-top').css({
+        'top': coords[1] * 0.95,
+        'left': coords[0] * 1.05
+    });
+    $('#panel-holo-bottom').css({
+        'top': coords[3] * 1.02,
+        'left': coords[2] * 0.97
+    });
+}
+
+$(document).ready(function(e) {
+    $('img[usemap]').rwdImageMaps();
+
+    $(".controlpanel-object").hover(function() {
+        coords = $(this).attr('coords');
+        coords = coords.split(',');
+        placePanelHelperTextRect(coords);
+
+        helperText = $(this).attr('alt');
+        helperText = helperText.split('|');
+        $('#panel-holo-top').html(helperText[0]);
+        $('#panel-holo-bottom').html(helperText[1]);
+
+        $("#panel-holo-top").show();
+        $("#panel-holo-bottom").show();
+
+        if (helperText[0] == 'Access' && helperText[1] == 'Restricted') {
+            $("#panel-holo-top, #panel-holo-bottom").css({
+                'color': '#f00'
+            });
+        } else {
+            $("#panel-holo-top, #panel-holo-bottom").css({
+                'color': '#0f0'
+            });
+        }
+
+    }, function() {
+        $("#panel-holo-top").hide();
+        $("#panel-holo-bottom").hide();
+    });
+
+});
+
+</script>
+
+</body>
+</html>
