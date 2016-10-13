@@ -32,6 +32,7 @@
 body {
     overflow: hidden;
     margin: 0;
+    background: black;
 }
 
 #controlpanel {
@@ -48,6 +49,36 @@ body {
     text-transform: uppercase;
 }
 
+.restricted {
+    color: #f00;
+}
+
+.mobile-menu {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+li.panel-holo {
+    position: relative;
+}
+
+a.restricted {
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .hidden-xs {
+        display: none;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .visible-xs {
+        display: none;
+    }
+}
+
+
 </style>
 
 <script>
@@ -63,9 +94,25 @@ body {
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="visible-xs mobile-menu">
+    <ol>
+        <li class="panel-holo restricted"><a href="drake.html" class="panel-holo restricted">DEVICE LOCKED (Out there)</a></li>
+        <li class="panel-holo restricted"><a href="deepfield.html" class="panel-holo restricted">DEVICE LOCKED (Deep field)</a></li>
+        <li class="panel-holo restricted"><a href="#" class="panel-holo restricted">ACCESS RESTRICTED</a></li>
+        <li class="panel-holo"><a href="observatory.html" class="panel-holo">Visions Observatory</a></li>
+        <li class="panel-holo restricted"><a href="pareidolia.html" class="panel-holo restricted">DEVICE LOCKED (Pattern recognition)</a></li>
+        <li class="panel-holo restricted"><a href="#" class="panel-holo restricted">ACCESS RESTRICTED</a></li>
+        <li class="panel-holo restricted"><a href="nohope.html" class="panel-holo restricted">DEVICE LOCKED (No hope)</a></li>
+        <li class="panel-holo"><a href="starfield.html" class="panel-holo">Warp speed</a></li>
+        <li class="panel-holo restricted"><a href="transmit.html" class="panel-holo restricted">DEVICE LOCKED (Transmit message)</a></li>
+    </ol>
+    <hr>
+    <div class="panel-holo restricted" style="text-align: center;">This site is intended for use on the desktop. Most features are unavailable on mobile.</div>
+</div>
 
-    <img name="controlpanel" src="images/control-panel.jpg" width="2982" height="1940" id="controlpanel" usemap="#m_controlpanel" alt="Control Panel">
+<div class="container-fluid hidden-xs">
+
+    <img name="controlpanel" src="images/control-panel.jpg" width="2982" height="1940" id="controlpanel" usemap="#m_controlpanel" alt="Control Panel" class="hidden-xs">
 
     <div id="panel-holo-top" class="panel-holo"> </div>
     <div id="panel-holo-bottom" class="panel-holo"> </div>
@@ -81,8 +128,8 @@ body {
         <area id="screen-8" class="controlpanel-object" shape="rect" coords="2008,1036,2210,1225" href="starfield.html" alt="Warp|Speed" />
         <area id="screen-7" class="controlpanel-object" shape="rect" coords="1713,1185,1913,1369" href="nohope.html" alt="No|Hope" />
         <area id="screen-6" class="controlpanel-object" shape="rect" coords="1713,943,1913,1136" href="#" alt="Access|Restricted" />
-        <area id="screen-5" class="controlpanel-object" shape="rect" coords="1441,1053,1656,1262" href="#" alt="Access|Restricted" />
-        <area id="screen-4" class="controlpanel-object" shape="rect" coords="1182,1185,1380,1383" href="#" alt="Access|Restricted" />
+        <area id="screen-5" class="controlpanel-object" shape="rect" coords="1441,1053,1656,1262" href="pareidolia.html" alt="Pattern|Recognition" />
+        <area id="screen-4" class="controlpanel-object" shape="rect" coords="1182,1185,1380,1383" href="observatory.html" alt="Visions|Observatory" />
         <area id="screen-3" class="controlpanel-object" shape="rect" coords="1182,943,1380,1136" href="#" alt="Access|Restricted" />
         <area id="screen-2" class="controlpanel-object" shape="rect" coords="884,1053,1084,1246" href="deepfield.html" alt="Deep|Field" />
         <area id="screen-1" class="controlpanel-object" shape="rect" coords="610,1053,814,1246" href="drake.html" alt="Out|There" />
